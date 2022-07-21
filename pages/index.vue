@@ -1,9 +1,14 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <HeroBanner />
+  </div>
 </template>
 
 <script>
+import HeroBanner from '../components/HeroBanner.vue';
+
 export default {
-  name: 'IndexPage',
+    name: "IndexPage",
+    components: { HeroBanner }
 }
 </script>
