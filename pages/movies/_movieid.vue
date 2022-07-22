@@ -52,9 +52,14 @@ import axios from  'axios'
 import LoadingAnimation from '../../components/LoadingAnimation.vue'
 export default {
     name: "single-movie",
+    head() {
+      return {
+        title: this.movie.title,
+      }
+    },
     data() {
         return {
-            movie: null,
+            movie: '',
         };
     },
     async fetch() {
