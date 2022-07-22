@@ -6,8 +6,8 @@
     <div class="text-container">
 
       <div class="text">
-        <span class="mini-heading">Now Stremaing</span>
-        <h1><span>Now</span>Stremaing</h1>
+        <span class="mini-heading">Now Streaming</span>
+        <h1><span>Now</span> Streaming</h1>
         <a href="#movie-grid" class="button">View movies</a>
       </div>
 
