@@ -7,8 +7,10 @@
       <button v-show="searchInput !== ''" class="button" @click="clearSearch">Clear search</button>
     </div>
 
-    <div v-if="searchInput !== ''" class="container movies">
-      <div id="movie-grid" class="movies-grid">
+    <LoadingAnimation v-if="$fetchState.pending" />
+
+    <div v-else class="container movies">
+      <div v-if="searchInput !== ''" id="movie-grid" class="movies-grid">
         <div v-for="(movie, index) in searchedMovies" :key="index" class="movie">
 
           <div class="movie-img">
@@ -36,10 +38,8 @@
 
         </div>
       </div>
-    </div>
 
-    <div v-else class="container movies">
-      <div id="movie-grid" class="movies-grid">
+      <div v-else id="movie-grid" class="movies-grid">
         <div v-for="(movie, index) in movies" :key="index" class="movie">
 
           <div class="movie-img">
@@ -68,16 +68,19 @@
         </div>
       </div>
     </div>
+
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import HeroBanner from '../components/HeroBanner.vue';
+import LoadingAnimation from '../components/LoadingAnimation.vue';
 
 export default {
     name: "IndexPage",
-    components: { HeroBanner },
+    components: { HeroBanner, LoadingAnimation },
     data() {
       return {
         movies: [],
@@ -95,6 +98,7 @@ export default {
       await this.searchMovies()
 
     },
+    fetchDelay: 1000,
 
     methods: {
       async getMovies() {
